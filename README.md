@@ -3,6 +3,7 @@
 ![CMake and Test](https://github.com/EVictorson/simple_example_projects/actions/workflows/cmake.yml/badge.svg)
 ![Languages](https://img.shields.io/github/languages/count/evictorson/simple_example_projects)
 ![Last Commit](https://img.shields.io/github/last-commit/evictorson/simple_example_projects)
+![](https://img.shields.io/github/commits-since/evictorson/simple_example_projects/v0.1-alpha)
 
 ### Projects
 Currently the only project directory is for playing Tic-Tac-Toe.  Others may be added at a later time.  
