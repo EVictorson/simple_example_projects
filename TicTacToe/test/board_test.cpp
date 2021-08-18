@@ -10,9 +10,15 @@ public:
   int board_size{3};
   const std::string EMPTY_SPACE{" "};
   std::unique_ptr<Board> board;
+  std::string marker{'X'};
+  int row{0};
+  int col{0};
+  const std::vector<std::string> PLAYER_SYMBOLS{"X", "O"};
 
   void SetUp() override {
     board = std::make_unique<Board>(board_size);
+    int row{0};
+    int col{0};
   }
 
   void TearDown() override {
@@ -21,7 +27,6 @@ public:
 };
 
 TEST_F(BoardTestFixture, EmptyBoardTest) {
-  int board_size = board->get_size();
   bool all_cells_empty = true;
   //TODO: break out into helper function, code duplication
   for (int row_idx = 0; row_idx < board_size; row_idx++) {
@@ -36,10 +41,6 @@ TEST_F(BoardTestFixture, EmptyBoardTest) {
 }
 
 TEST_F(BoardTestFixture, AddMarkerTestX) {
-  int row{0};
-  int col{0};
-  std::string marker = "X";
-
   board->add_marker(row, col, marker);
   std::string element = board->get_element(row, col);
 
@@ -48,15 +49,11 @@ TEST_F(BoardTestFixture, AddMarkerTestX) {
 
 
 TEST_F(BoardTestFixture, ResetBoardTest) {
-  int row{0};
-  int col{0};
-  std::string marker = "X";
   board->add_marker(row, col, marker);
 
   board->reset_board();
 
   //TODO: break out into helper function, code duplication
-  int board_size = board->get_size();
   bool all_cells_empty = true;
   for (int row_idx = 0; row_idx < board_size; row_idx++) {
     for (int col_idx = 0; col_idx < board_size; col_idx++) {
@@ -70,9 +67,6 @@ TEST_F(BoardTestFixture, ResetBoardTest) {
 }
 
 TEST_F(BoardTestFixture, HorizontalWinTest) {
-  std::string marker = "X";
-  int board_size = board->get_size();
-  int row{0};
   bool end_condition;
 
   for (int col = 0; col < board_size; col++) {
@@ -88,9 +82,6 @@ TEST_F(BoardTestFixture, HorizontalWinTest) {
 }
 
 TEST_F(BoardTestFixture, VerticalWinTest) {
-  std::string marker = "X";
-  int board_size = board->get_size();
-  int col{0};
   bool end_condition;
 
   for (int row = 0; row < board_size; row++) {
@@ -105,6 +96,55 @@ TEST_F(BoardTestFixture, VerticalWinTest) {
   EXPECT_EQ(end_condition, true);
 }
 
+TEST_F(BoardTestFixture, PositiveDiagonalWinTest) {
+  bool end_condition;
+  row = board_size - 1;
+
+  for (int col = 0; col < board_size; col++) {
+    board->add_marker(row, col, marker);
+    row--;
+    end_condition = board->check_for_end_condition();
+    if (col < board_size - 1) {
+      EXPECT_EQ(end_condition, false);
+    }
+  }
+
+  end_condition = board->check_for_end_condition();
+  EXPECT_EQ(end_condition, true);
+}
+
+TEST_F(BoardTestFixture, NegativeDiagonalWinTest) {
+  bool end_condition;
+  row = 0;
+
+  for (int col = 0; col < board_size; col++) {
+    board->add_marker(row, col, marker);
+    row++;
+    end_condition = board->check_for_end_condition();
+    if (col < board_size - 1) {
+      EXPECT_EQ(end_condition, false);
+    }
+  }
+
+  end_condition = board->check_for_end_condition();
+  EXPECT_EQ(end_condition, true);
+}
+
+TEST_F(BoardTestFixture, StalemateTest) {
+  int curr_player = 0;
+
+  for (int row = 0; row < board_size; row++) {
+    for (int col = 0; col < board_size; col++) {
+      if (col % board_size > 1) {
+        curr_player = !curr_player;
+      }
+      board->add_marker(row, col, PLAYER_SYMBOLS[curr_player]);
+    }
+  }
+  //std::cout << *board << std::endl;
+  bool stalemate = board->check_stalemate();
+  EXPECT_EQ(stalemate, true);
+}
 
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);

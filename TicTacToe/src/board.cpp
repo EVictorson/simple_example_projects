@@ -38,6 +38,7 @@ bool Board::validate_space_empty(const int &row, const int &col) {
   return false;
 }
 
+//TODO: change this to get more information about the end condition
 bool Board::check_for_end_condition() {
   if (check_horizontal_win()) {
     return true;
