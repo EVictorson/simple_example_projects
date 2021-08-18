@@ -18,6 +18,14 @@ Board::Board(int board_size) : size_{board_size} {
 Board::~Board() {
 }
 
+void Board::reset_board() {
+  for (int row = 0; row < size_; row++) {
+    for (int col = 0; col < size_; col++) {
+      board_[row][col] = EMPTY_SPACE_;
+    }
+  }
+}
+
 void Board::add_marker(const int &row, const int &col,
                        const std::string &marker) {
   board_[row][col] = marker;
@@ -28,28 +36,6 @@ bool Board::validate_space_empty(const int &row, const int &col) {
     return true;
   }
   return false;
-}
-
-int Board::get_size() {
-  return size_;
-}
-
-void Board::reset_board() {
-  for (int row = 0; row < size_; row++) {
-    for (int col = 0; col < size_; col++) {
-      board_[row][col] = EMPTY_SPACE_;
-    }
-  }
-}
-
-void Board::generate_board() {
-  for (int row = 0; row < size_; row++) {
-    std::vector<std::string> row_vec;
-    for (int col = 0; col < size_; col++) {
-      row_vec.push_back(EMPTY_SPACE_);
-    }
-  board_.push_back(row_vec);
-  }
 }
 
 bool Board::check_for_end_condition() {
@@ -65,6 +51,35 @@ bool Board::check_for_end_condition() {
     return true;
   }
   return false;
+}
+
+bool Board::check_stalemate() {
+  int num_empty_spaces{0};
+  for (int row_idx = 0; row_idx < size_; row_idx++) {
+    for (int col_idx = 0; col_idx < size_; col_idx++) {
+      if (board_[row_idx][col_idx] == EMPTY_SPACE_) {
+        num_empty_spaces++;
+      }
+    }
+  }
+  if (num_empty_spaces == 0) {
+    return true;
+  }
+  return false;
+}
+
+int Board::get_size() {
+  return size_;
+}
+
+void Board::generate_board() {
+  for (int row = 0; row < size_; row++) {
+    std::vector<std::string> row_vec;
+    for (int col = 0; col < size_; col++) {
+      row_vec.push_back(EMPTY_SPACE_);
+    }
+  board_.push_back(row_vec);
+  }
 }
 
 bool Board::check_all_elements_same(const std::vector<std::string> &vec) {
@@ -126,21 +141,6 @@ bool Board::check_negative_diagonal_win() {
     return true;
   }
 
-  return false;
-}
-
-bool Board::check_stalemate() {
-  int num_empty_spaces{0};
-  for (int row_idx = 0; row_idx < size_; row_idx++) {
-    for (int col_idx = 0; col_idx < size_; col_idx++) {
-      if (board_[row_idx][col_idx] == EMPTY_SPACE_) {
-        num_empty_spaces++;
-      }
-    }
-  }
-  if (num_empty_spaces == 0) {
-    return true;
-  }
   return false;
 }
 
