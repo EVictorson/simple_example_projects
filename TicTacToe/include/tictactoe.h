@@ -20,6 +20,7 @@ class TicTacToe {
 public:
   TicTacToe();
   TicTacToe(const TicTacToe&) = delete;
+  TicTacToe& operator=(const TicTacToe&) = delete;
   ~TicTacToe();
   void run();
   int get_current_player();
