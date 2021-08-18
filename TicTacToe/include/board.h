@@ -25,6 +25,7 @@ public:
   bool check_for_end_condition();
   bool check_stalemate();
   int get_size();
+  std::string get_element(const int &row, const int &col);
 
   friend std::ostream& operator <<(std::ostream& out, const Board &b);
 

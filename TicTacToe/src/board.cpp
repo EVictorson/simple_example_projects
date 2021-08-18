@@ -72,6 +72,10 @@ int Board::get_size() {
   return size_;
 }
 
+std::string Board::get_element(const int &row, const int &col) {
+  return board_[row][col];
+}
+
 void Board::generate_board() {
   for (int row = 0; row < size_; row++) {
     std::vector<std::string> row_vec;
