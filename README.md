@@ -1,6 +1,6 @@
 # simple_example_projects
 
-![CMake and Test](https://github.com/EVictorson/simple_example_projects/actions/workflows/CMake%20and%20Test/badge.svg)
+![CMake and Test](https://github.com/EVictorson/simple_example_projects/actions/workflows/cmake.yml/badge.svg)
 
 
 ### Setup
