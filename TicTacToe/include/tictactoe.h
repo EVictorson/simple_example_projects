@@ -24,11 +24,11 @@ public:
   void run();
 
 protected:
-  void get_user_input();
-  void toggle_player_num();
   int display_startup_message();
-  bool check_for_replay();
+  void get_user_input();
   int get_and_validate_input();
+  void toggle_player_num();
+  bool check_for_replay();
 
   std::unique_ptr<Board> board_;
   int current_player_{0};

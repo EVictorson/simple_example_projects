@@ -20,23 +20,6 @@ TicTacToe::TicTacToe() {
 TicTacToe::~TicTacToe() {
 }
 
-int TicTacToe::display_startup_message() {
-  int board_size;
-
-  std::cout << "Welcome to TicTacToe!" << std::endl;
-  std::cout << "Please enter the size of the TicTacToe board: ";
-  std::cin >> board_size;
-  while (std::cin.fail()) {
-      std::cout << "\nThe board size must be an integer." << std::endl;
-      std::cout << "Please enter an integer size: ";
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      std::cin >> board_size;
-  }
-
-  return board_size;
-}
-
 void TicTacToe::run() {
   bool replay = true;
   while (replay) {
@@ -53,6 +36,23 @@ void TicTacToe::run() {
     }
     replay = check_for_replay();
   }
+}
+
+int TicTacToe::display_startup_message() {
+  int board_size;
+
+  std::cout << "Welcome to TicTacToe!" << std::endl;
+  std::cout << "Please enter the size of the TicTacToe board: ";
+  std::cin >> board_size;
+  while (std::cin.fail()) {
+      std::cout << "\nThe board size must be an integer." << std::endl;
+      std::cout << "Please enter an integer size: ";
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      std::cin >> board_size;
+  }
+
+  return board_size;
 }
 
 void TicTacToe::get_user_input() {
