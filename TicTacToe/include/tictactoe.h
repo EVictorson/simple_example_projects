@@ -22,6 +22,7 @@ public:
   TicTacToe(const TicTacToe&) = delete;
   ~TicTacToe();
   void run();
+  int get_current_player();
 
 protected:
   int display_startup_message();

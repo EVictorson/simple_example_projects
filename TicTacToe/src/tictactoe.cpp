@@ -38,6 +38,10 @@ void TicTacToe::run() {
   }
 }
 
+int TicTacToe::get_current_player() {
+  return current_player_;
+}
+
 int TicTacToe::display_startup_message() {
   int board_size;
 
