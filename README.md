@@ -4,6 +4,7 @@
 ![Languages](https://img.shields.io/github/languages/count/evictorson/simple_example_projects)
 ![Last Commit](https://img.shields.io/github/last-commit/evictorson/simple_example_projects)
 ![](https://img.shields.io/github/commits-since/evictorson/simple_example_projects/v0.1-alpha)
+![](https://img.shields.io/github/issues/evictorson/simple_example_projects)
 
 ### Projects
 Currently the only project directory is for playing Tic-Tac-Toe.  Others may be added at a later time.  
