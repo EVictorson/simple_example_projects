@@ -22,4 +22,4 @@ jobs:
     - name: make
       run: cd TicTacToe && cd build && make
     - name: Run Test
-      run: make test
+      run: cd TicTacTie && cd build && make test
