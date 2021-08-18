@@ -10,11 +10,11 @@
 #ifndef TICTACTOE_H
 #define TICTACTOE_H
 
-#include "board.h"
 #include <vector>
 #include <iostream>
 #include <string>
 #include <memory>
+#include "board.h"
 
 class TicTacToe {
 public:

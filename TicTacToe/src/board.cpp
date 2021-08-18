@@ -7,9 +7,9 @@
  *
  */
 
-#include "../include/board.h"
 #include <iostream>
 #include <vector>
+#include "board.h"
 
 Board::Board(int board_size) : size_{board_size} {
   generate_board();

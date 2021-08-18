@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../include/board.h"
-#include "../include/tictactoe.h"
+#include "board.h"
+#include "tictactoe.h"
 
 int main() {
   TicTacToe ttt;
