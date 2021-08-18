@@ -2,6 +2,8 @@
 
 ![CMake and Test](https://github.com/EVictorson/simple_example_projects/actions/workflows/cmake.yml/badge.svg)
 
+### Projects
+Currently the only project directory is for playing Tic-Tac-Toe.  Others may be added at a later time.
 
 ### Setup
 In the root of the project directory create a `/build` and `/bin` directory.  
