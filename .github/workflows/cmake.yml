@@ -20,6 +20,6 @@ jobs:
     - name: configure
       run: cd TicTacToe && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
     - name: make
-      run: cd build && make
+      run: cd TicTacToe && cd build && make
     - name: Run Test
       run: make test
