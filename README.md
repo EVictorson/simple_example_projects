@@ -1,4 +1,4 @@
-# simple_example_projects
+# Simple Example Projects
 
 ![CMake and Test](https://github.com/EVictorson/simple_example_projects/actions/workflows/cmake.yml/badge.svg)
 
